@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearView BI | Business Intelligence Consultant</title>
+    <meta name="description" content="Van ruwe data naar heldere inzichten. Power BI dashboards en datamodellen die direct bijdragen aan betere besluitvorming.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange-50: #FFF7ED;
+            --orange-100: #FFEDD5;
+            --orange-500: #F5A623;
+            --orange-600: #E09000;
+            --orange-700: #C2410C;
+            
+            --slate-50: #F8FAFC;
+            --slate-100: #F1F5F9;
+            --slate-200: #E2E8F0;
+            --slate-300: #CBD5E1;
+            --slate-400: #94A3B8;
+            --slate-500: #64748B;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1E293B;
+            
+            --green-500: #22C55E;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--slate-800);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ===== UTILITIES ===== */
+        .container {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 80px 24px;
+        }
+
+        .text-center { text-align: center; }
+        .text-white { color: var(--white); }
+        .text-orange { color: var(--orange-500); }
+        .text-slate-400 { color: var(--slate-400); }
+        .text-slate-500 { color: var(--slate-500); }
+        .text-slate-600 { color: var(--slate-600); }
+
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+
+        .mb-2 { margin-bottom: 8px; }
+        .mb-3 { margin-bottom: 12px; }
+        .mb-4 { margin-bottom: 16px; }
+        .mb-6 { margin-bottom: 24px; }
+        .mb-8 { margin-bottom: 32px; }
+        .mb-16 { margin-bottom: 64px; }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--slate-100);
+        }
+
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--slate-800);
+        }
+
+        .logo-text span {
+            color: var(--slate-600);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            color: var(--slate-600);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--orange-500);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--orange-500);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--orange-600);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--orange-600);
+            border: 2px solid var(--slate-200);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--slate-300);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--slate-700);
+            border: 2px solid var(--slate-200);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--slate-300);
+        }
+
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 18px;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--orange-600);
+        }
+
+        .btn-white:hover {
+            background: var(--orange-50);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+            padding: 16px 24px 24px;
+            background: var(--white);
+            border-top: 1px solid var(--slate-100);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 128px 24px 80px;
+            background: linear-gradient(135deg, var(--slate-50) 0%, var(--white) 50%, var(--orange-50) 100%);
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--orange-100);
+            color: var(--orange-700);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--orange-500);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--slate-800);
+            margin-bottom: 24px;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            color: var(--slate-600);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 640px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .trust-indicators {
+            padding-top: 32px;
+            border-top: 1px solid var(--slate-200);
+        }
+
+        .trust-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--slate-500);
+            font-size: 14px;
+        }
+
+        .trust-item i {
+            color: var(--green-500);
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--slate-800);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--slate-600);
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            padding: 32px;
+            background: var(--slate-50);
+            border-radius: 16px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: var(--white);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--slate-100);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--orange-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: all 0.3s;
+        }
+
+        .service-icon i {
+            width: 32px;
+            height: 32px;
+            color: var(--orange-500);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--orange-500);
+        }
+
+        .service-card:hover .service-icon i {
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--slate-800);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--slate-600);
+            line-height: 1.7;
+        }
+
+        /* ===== WHY ME SECTION ===== */
+        .why-me {
+            background: var(--slate-800);
+        }
+
+        .why-me .section-header h2 {
+            color: var(--white);
+        }
+
+        .why-me .section-header p {
+            color: var(--slate-300);
+        }
+
+        .usps-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+
+        .usp-card {
+            background: rgba(51, 65, 85, 0.5);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .usp-card:hover {
+            background: var(--slate-700);
+        }
+
+        .usp-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--orange-500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .usp-icon i {
+            width: 24px;
+            height: 24px;
+            color: var(--white);
+        }
+
+        .usp-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .usp-card p {
+            font-size: 14px;
+            color: var(--slate-400);
+        }
+
+        .quote {
+            margin-top: 64px;
+            text-align: center;
+        }
+
+        .quote blockquote {
+            font-size: 24px;
+            color: var(--slate-300);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ===== CASES SECTION ===== */
+        .cases {
+            background: var(--white);
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .case-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--slate-200);
+            transition: all 0.3s;
+        }
+
+        .case-card:hover {
+            border-color: var(--orange-200);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-image {
+            height: 192px;
+            background: linear-gradient(135deg, var(--slate-100) 0%, var(--slate-200) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case-image i {
+            width: 64px;
+            height: 64px;
+            color: var(--slate-300);
+        }
+
+        .case-content {
+            padding: 24px;
+        }
+
+        .case-category {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--orange-500);
+            margin-bottom: 8px;
+        }
+
+        .case-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--slate-800);
+            margin-bottom: 12px;
+        }
+
+        .case-card p {
+            font-size: 14px;
+            color: var(--slate-600);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .case-tag {
+            font-size: 12px;
+            background: var(--slate-100);
+            color: var(--slate-600);
+            padding: 4px 12px;
+            border-radius: 9999px;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta {
+            padding: 64px 24px;
+            background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 20px;
+            color: var(--orange-100);
+            margin-bottom: 32px;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            background: var(--slate-50);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+        }
+
+        .contact-info h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--slate-800);
+            margin-bottom: 16px;
+        }
+
+        .contact-info > p {
+            font-size: 18px;
+            color: var(--slate-600);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--orange-100);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            width: 24px;
+            height: 24px;
+            color: var(--orange-500);
+        }
+
+        .contact-item-label {
+            font-size: 14px;
+            color: var(--slate-500);
+        }
+
+        .contact-item-value {
+            font-weight: 500;
+            color: var(--slate-800);
+        }
+
+        .contact-form-wrapper {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--slate-100);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--slate-700);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--slate-200);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--orange-500);
+            box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.1);
+        }
+
+        .form-group textarea {
+            resize: none;
+            min-height: 120px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--slate-400);
+        }
+
+        .contact-form-wrapper .btn {
+            width: 100%;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--slate-800);
+            padding: 32px 24px;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1152px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .footer-logo span {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: var(--slate-400);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--slate-400);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange-500);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .usps-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .usps-grid .usp-card:nth-child(4),
+            .usps-grid .usp-card:nth-child(5) {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-description {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .trust-list {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .usps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+
+            .quote blockquote {
+                font-size: 18px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="#" class="logo">
+                <img src="images/logo-solo.png" alt="ClearView BI Logo">
+                <span class="logo-text">Clear<span>View</span> BI</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="#diensten" class="nav-link">Diensten</a>
+                <a href="#waarom" class="nav-link">Waarom ik</a>
+                <a href="#cases" class="nav-link">Cases</a>
+                <a href="#contact" class="btn btn-primary">Contact</a>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#diensten" class="nav-link" onclick="closeMobileMenu()">Diensten</a>
+            <a href="#waarom" class="nav-link" onclick="closeMobileMenu()">Waarom ik</a>
+            <a href="#cases" class="nav-link" onclick="closeMobileMenu()">Cases</a>
+            <a href="#contact" class="btn btn-primary" onclick="closeMobileMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Business Intelligence Consultant
+                </div>
+                
+                <h1>Van ruwe data naar <span class="text-orange">heldere inzichten</span></h1>
+                
+                <p class="hero-description">
+                    Ik help organisaties grip te krijgen op hun data. Met Power BI dashboards en 
+                    datamodellen die niet alleen mooi zijn, maar direct bijdragen aan betere besluitvorming.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary btn-lg">
+                        Vrijblijvend kennismaken
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#diensten" class="btn btn-outline btn-lg">
+                        Bekijk mijn diensten
+                    </a>
+                </div>
+
+                <div class="trust-indicators">
+                    <div class="trust-list">
+                        <div class="trust-item">
+                            <i data-lucide="check-circle"></i>
+                            <span>Ervaring in maakindustrie</span>
+                        </div>
+                        <div class="trust-item">
+                            <i data-lucide="check-circle"></i>
+                            <span>Microsoft Certified</span>
+                        </div>
+                        <div class="trust-item">
+                            <i data-lucide="check-circle"></i>
+                            <span>Eerste resultaat binnen 2 weken</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="diensten" class="section services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Wat ik voor u kan betekenen</h2>
+                <p>Van dashboard-ontwikkeling tot complete datamodellering — altijd gericht op praktisch resultaat.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <h3>Power BI Dashboards</h3>
+                    <p>Op maat gemaakte dashboards die uw KPI's visueel en interactief presenteren. Van productie-overzichten tot financiële rapportages.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <h3>Datamodellering & SQL</h3>
+                    <p>Efficiënte datastructuren en geoptimaliseerde queries voor snelle, betrouwbare data-oplevering uit meerdere bronnen.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3>DAX & Berekeningen</h3>
+                    <p>Complexe berekeningen vertaald naar begrijpelijke KPI's. Van rolling averages tot time-intelligence.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3>Excel → Power BI</h3>
+                    <p>Vervang foutgevoelige spreadsheets door geautomatiseerde, schaalbare Power BI-oplossingen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Me Section -->
+    <section id="waarom" class="section why-me">
+        <div class="container">
+            <div class="section-header">
+                <h2>Waarom ClearView BI?</h2>
+                <p>Wat mij onderscheidt van andere BI-consultants</p>
+            </div>
+
+            <div class="usps-grid">
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h3>Kwaliteit & Nauwkeurigheid</h3>
+                    <p>Grondig gevalideerde rapportages met volledige documentatie</p>
+                </div>
+
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h3>Snelheid & Efficiëntie</h3>
+                    <p>Werkend prototype binnen 1-2 weken</p>
+                </div>
+
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h3>Helder Communiceren</h3>
+                    <p>Techniek vertaald naar begrijpelijke taal</p>
+                </div>
+
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h3>Praktische Inzichten</h3>
+                    <p>Actionable KPI's waar u direct mee aan de slag kunt</p>
+                </div>
+
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h3>Procesbegrip</h3>
+                    <p>Combinatie van BI-expertise én kennis van productieprocessen</p>
+                </div>
+            </div>
+
+            <div class="quote">
+                <blockquote>
+                    "Mijn achtergrond in Technische Bedrijfskunde én dagelijkse ervaring in de maakindustrie 
+                    geeft mij een unieke combinatie. Ik begrijp niet alleen de data, maar ook de processen erachter."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section id="cases" class="section cases">
+        <div class="container">
+            <div class="section-header">
+                <h2>Voorbeeldprojecten</h2>
+                <p>Een greep uit recente opdrachten</p>
+            </div>
+
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-image">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-category">Maakindustrie</div>
+                        <h3>Productie Dashboard</h3>
+                        <p>Real-time OEE monitoring met drill-down naar machine-niveau. Resultaat: 15% reductie in ongeplande stilstand.</p>
+                        <div class="case-tags">
+                            <span class="case-tag">Power BI</span>
+                            <span class="case-tag">SQL</span>
+                            <span class="case-tag">OEE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-image">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-category">Metaalbewerking</div>
+                        <h3>Kostprijsanalyse</h3>
+                        <p>Geïntegreerde kostprijsrapportage met waterfall-charts voor variance analysis per productlijn.</p>
+                        <div class="case-tags">
+                            <span class="case-tag">DAX</span>
+                            <span class="case-tag">Financieel</span>
+                            <span class="case-tag">Power BI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-image">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-category">Logistiek</div>
+                        <h3>Excel Migratie</h3>
+                        <p>Van 12 losse Excel-bestanden naar één geautomatiseerd Power BI rapport met dagelijkse refresh.</p>
+                        <div class="case-tags">
+                            <span class="case-tag">Migratie</span>
+                            <span class="case-tag">Automatisering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Klaar om uw data te laten werken?</h2>
+            <p>Laten we vrijblijvend kennismaken en bespreken wat ik voor u kan betekenen.</p>
+            <a href="#contact" class="btn btn-white btn-lg">
+                Plan een gesprek
+                <i data-lucide="chevron-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Neem contact op</h2>
+                    <p>
+                        Benieuwd wat ClearView BI voor uw organisatie kan betekenen? 
+                        Neem vrijblijvend contact op voor een kennismakingsgesprek.
+                    </p>
+
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div>
+                                <div class="contact-item-label">E-mail</div>
+                                <div class="contact-item-value">contact@clearviewbi.nl</div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div>
+                                <div class="contact-item-label">Telefoon</div>
+                                <div class="contact-item-value">+31 6 12 34 56 78</div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="linkedin"></i>
+                            </div>
+                            <div>
+                                <div class="contact-item-label">LinkedIn</div>
+                                <div class="contact-item-value">linkedin.com/in/clearviewbi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Naam</label>
+                            <input type="text" id="name" name="name" placeholder="Uw naam" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="uw@email.nl" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Bericht</label>
+                            <textarea id="message" name="message" placeholder="Vertel kort waar u naar op zoek bent..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Verstuur bericht
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="images/logo-solo.png" alt="ClearView BI">
+                <span>ClearView BI</span>
+            </div>
+            <div class="footer-copyright">
+                © 2025 ClearView BI. Alle rechten voorbehouden.
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Voorwaarden</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            
+            mobileMenu.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            
+            mobileMenu.classList.remove('active');
+            menuIcon.setAttribute('data-lucide', 'menu');
+            lucide.createIcons();
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission (placeholder)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Bedankt voor uw bericht! Ik neem zo snel mogelijk contact met u op.');
+            this.reset();
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
