@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bedankt | ClearView BI</title>
+    <meta name="description" content="Bedankt voor uw bericht. Wij nemen zo snel mogelijk contact met u op.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy-800: #1E293B;
+            --navy-900: #0F172A;
+            --orange-500: #F5A623;
+            --orange-600: #E09000;
+            --slate-50: #F8FAFC;
+            --slate-100: #F1F5F9;
+            --slate-400: #94A3B8;
+            --slate-600: #475569;
+            --green-500: #22C55E;
+            --green-100: #DCFCE7;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(180deg, var(--slate-50) 0%, var(--white) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--green-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+        }
+
+        .success-icon i {
+            width: 40px;
+            height: 40px;
+            color: var(--green-500);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--navy-800);
+            margin-bottom: 16px;
+        }
+
+        .description {
+            font-size: 18px;
+            color: var(--slate-600);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--orange-500) 0%, var(--orange-600) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(245, 166, 35, 0.4);
+        }
+
+        .btn:hover {
+            box-shadow: 0 6px 20px rgba(245, 166, 35, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn i {
+            width: 18px;
+            height: 18px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--navy-800) 0%, var(--navy-900) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon i {
+            width: 24px;
+            height: 24px;
+            color: var(--orange-500);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--navy-800);
+        }
+
+        .logo-text span {
+            color: var(--slate-400);
+        }
+
+        .note {
+            margin-top: 48px;
+            padding: 20px;
+            background: var(--slate-100);
+            border-radius: 12px;
+            font-size: 14px;
+            color: var(--slate-600);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="logo">
+            <div class="logo-icon">
+                <i data-lucide="bar-chart-3"></i>
+            </div>
+            <span class="logo-text">Clear<span>View</span> BI</span>
+        </a>
+
+        <div class="success-icon">
+            <i data-lucide="check-circle"></i>
+        </div>
+
+        <h1>Bedankt voor uw bericht!</h1>
+        
+        <p class="description">
+            Wij hebben uw bericht ontvangen en nemen zo snel mogelijk contact met u op, 
+            doorgaans binnen 24 uur op werkdagen.
+        </p>
+
+        <a href="/" class="btn">
+            <i data-lucide="arrow-left"></i>
+            Terug naar homepage
+        </a>
+
+        <div class="note">
+            <strong>Wat kunt u verwachten?</strong><br>
+            Wij nemen contact met u op om uw vraag of uitdaging te bespreken. 
+            Mocht u in de tussentijd vragen hebben, mail ons gerust op 
+            <a href="/cdn-cgi/l/email-protection#b5d6dadbc1d4d6c1f5d6d9d0d4c7c3dcd0c2d7dc9bdbd9" style="color: var(--orange-500);"><span class="__cf_email__" data-cfemail="680b07061c090b1c280b040d091a1e010d1f0a014
